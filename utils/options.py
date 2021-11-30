@@ -70,7 +70,7 @@ parser.add_argument(
 parser.add_argument(
 	'--data_path',
 	type=str,
-	default='/home/lmb/cvpr_vgg2/data',
+	default='/home/zhaoxiandong/datasets/data.cifar10',
 	help='The dictionary where the input is stored. default:',
 )
 

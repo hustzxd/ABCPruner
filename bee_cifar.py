@@ -14,6 +14,7 @@ import numpy as np
 import heapq
 from data import cifar10, cifar100, imagenet
 from importlib import import_module
+import ipdb
 
 checkpoint = utils.checkpoint(args)
 device = torch.device(f"cuda:{args.gpus[0]}") if torch.cuda.is_available() else 'cpu'
@@ -84,7 +85,6 @@ def load_vgg_honey_model(model, random_rule):
     global oristate_dict
     state_dict = model.state_dict()
     last_select_index = None #Conv index selected in the previous layer
-
     for name, module in model.named_modules():
 
         if isinstance(module, nn.Conv2d):
@@ -636,7 +636,6 @@ def initilize():
         OnLooker.append(copy.deepcopy(BeeGroup()))
         for j in range(food_dimension):
             NectraSource[i].code.append(copy.deepcopy(random.randint(1,args.max_preserve)))
-
         #initilize honey souce
         NectraSource[i].fitness = calculationFitness(NectraSource[i].code, loader.trainLoader, args)
         NectraSource[i].rfitness = 0
